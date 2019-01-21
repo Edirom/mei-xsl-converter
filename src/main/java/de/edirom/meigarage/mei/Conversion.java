@@ -5,14 +5,40 @@ public enum Conversion {
     /*
       supported formats
      */
-    MUSICXMLTOMEI21(
-            "musicxmltomei21", // "id"
+    MUSICXMLTIMEWISETOMEI21(
+            "musicxmltimewisetomei21", // "id"
             "text/xml", // "mime type for target"
-            "musicxml", // "input format id"
-            "MusicXML Document (XML)", // "input description"
+            "musicxml-timewise", // "input format id"
+            "MusicXML Document (XML), timewise", // "input description"
             "score", // "input type" (score, audio, image, customization)
             "mei21", // "output format id"
             "MEI 2.1 XML Document (.xml)", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9 // "cost"
+    ),
+    
+    MUSICXMLPARTWISETOTIMEWISE(
+            "musicxmlpartwisetotimewise", // "id"
+            "text/xml", // "mime type for target"
+            "musicxml-partwise", // "input format id"
+            "MusicXML Document (XML), partwise", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "musicxml-timewise", // "output format id"
+            "MusicXML Document (XML), timewise", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9 // "cost"
+    ),
+    
+    MUSICXMLTIMEWISETOPARTWISE(
+            "musicxmltimewisetopartwise", // "id"
+            "text/xml", // "mime type for target"
+            "musicxml-timewise", // "input format id"
+            "MusicXML Document (XML), timewise", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "musicxml-partwise", // "output format id"
+            "MusicXML Document (XML), partwise", // "output description"
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"

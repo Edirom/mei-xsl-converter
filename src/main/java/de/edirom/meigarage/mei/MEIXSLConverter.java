@@ -124,8 +124,8 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			SaxonApiException, ConverterException {
 
 		// from MusicXML to MEI
-		if (fromDataType.getFormat().equals(Conversion.MUSICXMLTOMEI21.getIFormatId()) &&
-				toDataType.getFormat().equals(Conversion.MUSICXMLTOMEI21.getOFormatId())) {
+		if (fromDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI21.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI21.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, "musicxml2mei/musicxml2mei-3.0.xsl", properties);
@@ -135,6 +135,18 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, "mei21To30/mei21To30.xsl", properties);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/parttime.xsl", properties);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOPARTWISE.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOPARTWISE.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/timepart.xsl", properties);
 		}
 	}
 
