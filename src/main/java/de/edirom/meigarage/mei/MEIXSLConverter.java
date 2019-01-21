@@ -128,13 +128,13 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI21.getOFormatId())) {
 
 			properties.put("extension", "xml");
-			performXsltTransformation(inputStream, outputStream, "musicxml2mei/musicxml2mei-3.0.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/musicxml2mei/musicxml2mei-3.0.xsl", properties);
 
 		}else if(fromDataType.getFormat().equals(Conversion.MEI21TOMEI30.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI21TOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
-			performXsltTransformation(inputStream, outputStream, "mei21To30/mei21To30.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei21To30/mei21To30.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getOFormatId())) {

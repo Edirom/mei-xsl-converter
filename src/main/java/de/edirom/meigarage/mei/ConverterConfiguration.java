@@ -14,7 +14,7 @@ public class ConverterConfiguration {
     public static final List<ConversionActionArguments> CONVERSIONS = new ArrayList<ConversionActionArguments>();
     public static final String PROFILE_KEY = "de.edirom.ege.mei.profileNames";
 
-    public static final String STYLESHEETS_PATH  = "/usr/share/xml/mei/encoding-tools";
+    public static final String STYLESHEETS_PATH  = "/usr/share/xml/mei/music-stylesheets";
 
     public static final String SCOREFAMILY = "Scores";
     public static final String SCOREFAMILYCODE = "score";
@@ -22,7 +22,9 @@ public class ConverterConfiguration {
     public static final String DEFAULTFAMILY = "Other documents";
 
     static {
-        CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTOMEI21));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTIMEWISETOMEI21));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLPARTWISETOTIMEWISE));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTIMEWISETOPARTWISE));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI21TOMEI30));
     }
 
