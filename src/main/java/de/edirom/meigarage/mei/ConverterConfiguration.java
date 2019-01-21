@@ -12,7 +12,7 @@ public class ConverterConfiguration {
     private static final Logger LOGGER = Logger.getLogger(MEIXSLConverter.class);
 
     public static final List<ConversionActionArguments> CONVERSIONS = new ArrayList<ConversionActionArguments>();
-    public static final String PROFILE_KEY = "de.edirom.ege.mei.profileNames";
+    public static final String PROFILE_KEY = "de.edirom.meigarage.profileNames";
 
     public static final String STYLESHEETS_PATH  = "/usr/share/xml/mei/music-stylesheets";
 
