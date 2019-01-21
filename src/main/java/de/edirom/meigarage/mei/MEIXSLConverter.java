@@ -148,6 +148,18 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/timepart.xsl", properties);
 		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI2010TO2012.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI2010TO2012.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2010To2012/mei2010To2012.xsl", properties);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI2012TOMEI21.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI2012TOMEI21.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2012To2013/mei2012To2013.xsl", properties);
+		}
 	}
 
 	/*
