@@ -25,6 +25,8 @@ public class ConverterConfiguration {
         CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTIMEWISETOMEI21));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLPARTWISETOTIMEWISE));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTIMEWISETOPARTWISE));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MARCXMLTOMEI30));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MEI30TOMEI40));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI21TOMEI30));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2010TO2012));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2012TOMEI21));

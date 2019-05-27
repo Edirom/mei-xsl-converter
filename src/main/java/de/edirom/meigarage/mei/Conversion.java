@@ -44,6 +44,32 @@ public enum Conversion {
             9 // "cost"
     ),
 
+    MARCXMLTOMEI30(
+            "marcxmltomei30", // "id"
+            "text/xml", // "mime type for target"
+            "marcxml", // "input format id"
+            "MARC XML Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "mei30", // "output format id"
+            "MEI 3.0 XML Document", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9 // "cost"
+    ),
+
+    MEI30TOMEI40(
+            "mei30tomei40", // "id"
+            "text/xml", // "mime type for target"
+            "mei30", // "input format id"
+            "MEI 3.0 XML Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "mei40", // "output format id"
+            "MEI 4.0 XML Document", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9 // "cost"
+    ),
+
     MEI21TOMEI30(
             "mei21tomei30", // "id"
             "text/xml", // "mime type for target"

@@ -130,7 +130,14 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/musicxml2mei/musicxml2mei-3.0.xsl", properties);
 
-		}else if(fromDataType.getFormat().equals(Conversion.MEI21TOMEI30.getIFormatId()) &&
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI30TOMEI40.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI30TOMEI40.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei30To40/mei30To40.xsl", properties);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI21TOMEI30.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI21TOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
@@ -147,6 +154,12 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/timepart.xsl", properties);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MARCXMLTOMEI30.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MARCXMLTOMEI30.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/marc2mei/marc2mei.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI2010TO2012.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI2010TO2012.getOFormatId())) {
