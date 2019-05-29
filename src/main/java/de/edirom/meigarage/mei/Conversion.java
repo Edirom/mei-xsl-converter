@@ -12,7 +12,7 @@ public enum Conversion {
             "MusicXML Document (timewise)", // "input description"
             "score", // "input type" (score, audio, image, customization)
             "mei21", // "output format id"
-            "MEI 2.1 XML Document", // "output description"
+            "MEI 2.1 (2013) Document", // "output description"
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"
@@ -51,7 +51,7 @@ public enum Conversion {
             "MARC XML Document", // "input description"
             "score", // "input type" (score, audio, image, customization)
             "mei30", // "output format id"
-            "MEI 3.0 XML Document", // "output description"
+            "MEI 3.0 (2016) Document", // "output description"
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"
@@ -61,10 +61,10 @@ public enum Conversion {
             "mei30tomei40", // "id"
             "text/xml", // "mime type for target"
             "mei30", // "input format id"
-            "MEI 3.0 XML Document", // "input description"
+            "MEI 3.0 (2016) Document", // "input description"
             "score", // "input type" (score, audio, image, customization)
             "mei40", // "output format id"
-            "MEI 4.0 XML Document", // "output description"
+            "MEI 4.0 (2018) Document", // "output description"
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"
@@ -74,10 +74,10 @@ public enum Conversion {
             "mei21tomei30", // "id"
             "text/xml", // "mime type for target"
             "mei21", // "input format id"
-            "MEI 2.1 XML Document", // "input description"
+            "MEI 2.1 (2013) Document", // "input description"
             "score", // "input type" (score, audio, image, customization)
             "mei30", // "output format id"
-            "MEI 3.0 XML Document", // "output description"
+            "MEI 3.0 (2016) Document", // "output description"
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"
@@ -87,10 +87,10 @@ public enum Conversion {
             "mei2010to2012", // "id"
             "text/xml", // "mime type for target"
             "mei2010", // "input format id"
-            "MEI 2010 XML Document", // "input description"
+            "MEI 1.0 (2010) Document", // "input description"
             "score", // "input type" (score, audio, image, customization)
             "mei2012", // "output format id"
-            "MEI 2012 XML Document", // "output description"
+            "MEI 2.0 (2012) Document", // "output description"
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"
@@ -100,10 +100,10 @@ public enum Conversion {
             "mei2012toMEI21", // "id"
             "text/xml", // "mime type for target"
             "mei2012", // "input format id"
-            "MEI 2012 XML Document", // "input description"
+            "MEI 2.0 (2012) Document", // "input description"
             "score", // "input type" (score, audio, image, customization)
             "mei21", // "output format id"
-            "MEI 2.1 XML Document", // "output description"
+            "MEI 2.1 (2013) Document", // "output description"
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"
