@@ -173,6 +173,12 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2012To2013/mei2012To2013.xsl", properties);
 		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI40TOLILYPOND.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI40TOLILYPOND.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			performXsltTransformation(inputStream, outputStream, "meiler/mei2ly.xsl", properties);
+		}
 	}
 
 	/*

@@ -30,6 +30,7 @@ public class ConverterConfiguration {
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI21TOMEI30));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2010TO2012));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2012TOMEI21));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MEI40TOLILYPOND));
     }
 
     private static ConversionActionArguments getConversionActionArgument(Conversion format) {

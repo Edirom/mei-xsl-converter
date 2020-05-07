@@ -107,7 +107,22 @@ public enum Conversion {
             "score", // "output type" (score, audio, image, customization)
             true, // "visible as input"
             9 // "cost"
-    );
+    ),
+
+    MEI40TOLILYPOND(
+            "mei40toLilyPond", // "id"
+            "text/x-lilypond", // "mime type for target"
+            "mei40", // "input format id"
+            "MEI 4.0 (2018) Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "lilypond", // "output format id"
+            "LilyPond Document", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9 // "cost"
+    )
+
+    ;
 
 
     private String id;
