@@ -5,7 +5,9 @@ import pl.psnc.dl.ege.types.ConversionActionArguments;
 import pl.psnc.dl.ege.types.DataType;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ConverterConfiguration {
 
@@ -22,7 +24,7 @@ public class ConverterConfiguration {
     public static final String DEFAULTFAMILY = "Other documents";
 
     static {
-        CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTIMEWISETOMEI21));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTIMEWISETOMEI30));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLPARTWISETOTIMEWISE));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MUSICXMLTIMEWISETOPARTWISE));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MARCXMLTOMEI30));
@@ -38,22 +40,39 @@ public class ConverterConfiguration {
         StringBuffer sbParams = new StringBuffer();
         sbParams.append("<!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\">");
         sbParams.append("<properties>");
-        sbParams.append("<entry key=\"");
-        sbParams.append(PROFILE_KEY);
-        sbParams.append("\">");
-        sbParams.append("default");
-        if(sbParams.charAt(sbParams.length() - 1)==',') sbParams.deleteCharAt(sbParams.length() - 1);
-        sbParams.append("</entry><entry key=\"" + PROFILE_KEY + ".type\">array</entry>");
+
+        sbParams.append(propertyToString(PROFILE_KEY, "default", "array"));
+
+        HashMap<String, Conversion.Property> properties = format.getProperties();
+        for (Map.Entry<String, Conversion.Property> property : properties.entrySet()) {
+            String key = property.getKey();
+            String values = properties.get(property.getKey()).getValues();
+            String type = properties.get(property.getKey()).getType();
+            sbParams.append(propertyToString(key, values, type));
+        }
+
         sbParams.append("</properties>");
 
         ConversionActionArguments caa = new ConversionActionArguments(
-                new DataType(format.getIFormatId(), format.getMimeType(), format.getInputDescription(),
+                new DataType(format.getIFormatId(), format.getIMimeType(), format.getInputDescription(),
                         getType(format.getInputType())),
-                new DataType(format.getOFormatId(), format.getMimeType(),
+                new DataType(format.getOFormatId(), format.getOMimeType(),
                         format.getOutputDescription(), getType(format.getOutputType())),
                 sbParams.toString(), format.getVisible(), format.getCost());
 
         return caa;
+    }
+
+    private static String propertyToString(String profileKey, String values, String type) {
+        StringBuffer sbParam = new StringBuffer();
+        sbParam.append("<entry key=\"");
+        sbParam.append(profileKey);
+        sbParam.append("\">");
+        sbParam.append(values);
+        if(sbParam.charAt(sbParam.length() - 1)==',') sbParam.deleteCharAt(sbParam.length() - 1);
+        sbParam.append("</entry><entry key=\"" + profileKey + ".type\">" + type + "</entry>");
+
+        return sbParam.toString();
     }
 
     public static String getStylesheetsPath() {

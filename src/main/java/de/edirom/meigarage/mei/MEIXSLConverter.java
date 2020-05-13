@@ -124,8 +124,8 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			SaxonApiException, ConverterException {
 
 		// from MusicXML to MEI
-		if (fromDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI21.getIFormatId()) &&
-				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI21.getOFormatId())) {
+		if (fromDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI30.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/musicxml2mei/musicxml2mei-3.0.xsl", properties);
