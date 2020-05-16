@@ -145,6 +145,21 @@ public enum Conversion {
             true, // "visible as input"
             9, // "cost"
             new HashMap<String, Property>() {}
+    ),
+
+    COMPAREFILES(
+            "compareFiles", // "id"
+            "text/xml", // "input mime type"
+            "mei40Corpus", // "input format id"
+            "MEI 4.0 (2018) Corpus Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "text/xml", // "output format id"
+            "mei40Diff", // "output format id"
+            "MEI 4.0 (2018) Diff Document", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9, // "cost"
+            new HashMap<String, Property>() {}
     )
 
     ;

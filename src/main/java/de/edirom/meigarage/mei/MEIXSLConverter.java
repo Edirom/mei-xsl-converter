@@ -18,7 +18,9 @@ import pl.psnc.dl.ege.utils.EGEIOUtils;
 import pl.psnc.dl.ege.utils.IOResolver;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Source;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.URIResolver;
 import javax.xml.transform.stream.StreamSource;
 import java.io.*;
 import java.text.DateFormat;
@@ -128,6 +130,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/musicxml2mei/");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/musicxml2mei/musicxml2mei-3.0.xsl", properties);
 
 		}
@@ -135,49 +138,64 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 				toDataType.getFormat().equals(Conversion.MEI30TOMEI40.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/mei30To40/");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei30To40/mei30To40.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI21TOMEI30.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI21TOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/mei21To30/");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei21To30/mei21To30.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "w3c-musicxml/schema/");
 			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/parttime.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOPARTWISE.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOPARTWISE.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "w3c-musicxml/schema/");
 			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/timepart.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MARCXMLTOMEI30.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MARCXMLTOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/marc2mei/");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/marc2mei/marc2mei.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI2010TO2012.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI2010TO2012.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/mei2010To2012/");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2010To2012/mei2010To2012.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI2012TOMEI21.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI2012TOMEI21.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/mei2012To2013/");
 			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2012To2013/mei2012To2013.xsl", properties);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI40TOLILYPOND.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI40TOLILYPOND.getOFormatId())) {
 
 			properties.put("extension", "xml");
+			properties.put("base", "meiler/mei2ly.xsl");
 			performXsltTransformation(inputStream, outputStream, "meiler/mei2ly.xsl", properties);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.COMPAREFILES.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.COMPAREFILES.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			properties.put("base", "data-configuration/scripts/");
+			performXsltTransformation(inputStream, outputStream, "data-configuration/scripts/compare.files.xsl", properties);
 		}
 	}
 
@@ -245,7 +263,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 	 * Performs transformation with XSLT
 	 */
 	private void performXsltTransformation(InputStream inputStream,
-					       OutputStream outputStream, String xslt, Map<String, String> properties)
+										   OutputStream outputStream, String xslt, final Map<String, String> properties)
 			throws IOException, SaxonApiException, ConverterException {
 		FileOutputStream fos = null;
 		InputStream is = null;
@@ -266,6 +284,19 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			String extension = properties.get("extension");
 			File resFile = new File(outTempDir + File.separator + "document." + extension);
 			fos = new FileOutputStream(resFile);
+
+			final URIResolver resolver = comp.getURIResolver();
+
+			comp.setURIResolver(new URIResolver() {
+				public Source resolve(String href, String base) throws TransformerException {
+					if(base == "" && (href.startsWith("../") || href.startsWith("./")))
+						return resolver.resolve(href, ConverterConfiguration.getStylesheetsPath() +
+								File.separator + properties.get("base"));
+
+					return resolver.resolve(href, base);
+				}
+			});
+
 			XsltExecutable exec = comp.compile(new StreamSource(new FileInputStream(new File(
 					ConverterConfiguration.getStylesheetsPath() + File.separator + xslt))));
 			Xslt30Transformer transformer = exec.load30();

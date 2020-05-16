@@ -33,6 +33,7 @@ public class ConverterConfiguration {
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2010TO2012));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2012TOMEI21));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI40TOLILYPOND));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.COMPAREFILES));
     }
 
     private static ConversionActionArguments getConversionActionArgument(Conversion format) {
