@@ -92,6 +92,8 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			throws ConverterException, IOException {
 		boolean found = false;
 
+		System.setProperty("http.agent", "Chrome");
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Date date = new Date();
 		try {
