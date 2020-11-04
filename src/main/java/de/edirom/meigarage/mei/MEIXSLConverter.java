@@ -3,7 +3,6 @@ package de.edirom.meigarage.mei;
 import net.sf.saxon.s9api.*;
 import org.apache.log4j.Logger;
 import org.tei.utils.SaxonProcFactory;
-import org.tei.utils.XMLUtils;
 import org.w3c.dom.Document;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
