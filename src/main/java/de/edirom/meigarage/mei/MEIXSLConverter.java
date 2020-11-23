@@ -290,9 +290,15 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 
 			comp.setURIResolver(new URIResolver() {
 				public Source resolve(String href, String base) throws TransformerException {
-					if(base == "" && (href.startsWith("../") || href.startsWith("./")))
-						return resolver.resolve(href, ConverterConfiguration.getStylesheetsPath() +
-								File.separator + properties.get("base"));
+
+					Source s = resolver.resolve(href, ConverterConfiguration.getStylesheetsPath() +
+							File.separator + File.separator + properties.get("base"));
+
+					if(s != null) {
+						File fs = new File(s.getSystemId());
+						if(fs.exists())
+							return s;
+					}
 
 					return resolver.resolve(href, base);
 				}
