@@ -5,7 +5,7 @@
 		<import plugin-id="pl.psnc.dl.ege.root"/>
 	</requires>
 	<extension plugin-id="pl.psnc.dl.ege.root" point-id="Converter" id="MEIXSLConverter">
-		<parameter id="class" value="de.edirom.meigarage.MEIXSLConverter"/>
+		<parameter id="class" value="de.edirom.meigarage.mei.MEIXSLConverter"/>
 		<parameter id="name" value="MEI XSL Converter"/>
 	</extension>
 </plugin>

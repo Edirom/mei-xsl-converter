@@ -126,9 +126,9 @@
 	</repositories>   
 <distributionManagement>
    <repository>
-     <id>github</id>
-     <name>GitHub anneferger Apache Maven Packages</name>
-     <url>https://maven.pkg.github.com/anneferger/mei-xsl-converter</url>
+     <id>githubedirom</id>
+     <name>GitHub Edirom Apache Maven Packages</name>
+     <url>https://maven.pkg.github.com/Edirom/mei-xsl-converter</url>
    </repository>
 </distributionManagement>
 </project>
