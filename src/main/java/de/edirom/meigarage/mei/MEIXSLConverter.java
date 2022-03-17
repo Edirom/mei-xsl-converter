@@ -86,8 +86,12 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 		LOGGER.info("Warning: " + exception.getMessage());
 	}
 
+	public void convert(InputStream inputStream, OutputStream outputStream, ConversionActionArguments conversionDataTypes) throws ConverterException, IOException{
+		convert(inputStream,outputStream,conversionDataTypes, null);
+	}
+
 	public void convert(InputStream inputStream, OutputStream outputStream,
-			final ConversionActionArguments conversionDataTypes)
+			final ConversionActionArguments conversionDataTypes, String tempDir)
 			throws ConverterException, IOException {
 		boolean found = false;
 
@@ -105,7 +109,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 						    + conversionDataTypes.getOutputType().toString()
 						    + " WITH profile " + profile );
 					convertDocument(inputStream, outputStream, cadt.getInputType(), cadt.getOutputType(),
-							cadt.getProperties());
+							cadt.getProperties(), tempDir);
 					found = true;
 				}
 			}
@@ -123,7 +127,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 	 * Prepares transformation : based on MIME type.
 	 */
 	private void convertDocument(InputStream inputStream, OutputStream outputStream,
-			DataType fromDataType, DataType toDataType, Map<String, String> properties) throws IOException,
+			DataType fromDataType, DataType toDataType, Map<String, String> properties, String tempDir) throws IOException,
 			SaxonApiException, ConverterException {
 
 		// from MusicXML to MEI
