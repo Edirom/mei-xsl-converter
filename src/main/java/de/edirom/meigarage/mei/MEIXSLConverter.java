@@ -86,8 +86,12 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 		LOGGER.info("Warning: " + exception.getMessage());
 	}
 
+	public void convert(InputStream inputStream, OutputStream outputStream, ConversionActionArguments conversionDataTypes) throws ConverterException, IOException{
+		convert(inputStream,outputStream,conversionDataTypes, null);
+	}
+
 	public void convert(InputStream inputStream, OutputStream outputStream,
-			final ConversionActionArguments conversionDataTypes)
+			final ConversionActionArguments conversionDataTypes, String tempDir)
 			throws ConverterException, IOException {
 		boolean found = false;
 
@@ -105,7 +109,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 						    + conversionDataTypes.getOutputType().toString()
 						    + " WITH profile " + profile );
 					convertDocument(inputStream, outputStream, cadt.getInputType(), cadt.getOutputType(),
-							cadt.getProperties());
+							cadt.getProperties(), tempDir);
 					found = true;
 				}
 			}
@@ -123,7 +127,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 	 * Prepares transformation : based on MIME type.
 	 */
 	private void convertDocument(InputStream inputStream, OutputStream outputStream,
-			DataType fromDataType, DataType toDataType, Map<String, String> properties) throws IOException,
+			DataType fromDataType, DataType toDataType, Map<String, String> properties, String tempDir) throws IOException,
 			SaxonApiException, ConverterException {
 
 		// from MusicXML to MEI
@@ -132,7 +136,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 
 			properties.put("extension", "xml");
 			properties.put("base", "encoding-tools/musicxml2mei/");
-			performXsltTransformation(inputStream, outputStream, "encoding-tools/musicxml2mei/musicxml2mei-3.0.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/musicxml2mei/musicxml2mei-3.0.xsl", properties, tempDir);
 
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI30TOMEI40.getIFormatId()) &&
@@ -140,63 +144,63 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 
 			properties.put("extension", "xml");
 			properties.put("base", "encoding-tools/mei30To40/");
-			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei30To40/mei30To40.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei30To40/mei30To40.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI21TOMEI30.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI21TOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "encoding-tools/mei21To30/");
-			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei21To30/mei21To30.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei21To30/mei21To30.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MUSICXMLPARTWISETOTIMEWISE.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "w3c-musicxml/schema/");
-			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/parttime.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/parttime.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOPARTWISE.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MUSICXMLTIMEWISETOPARTWISE.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "w3c-musicxml/schema/");
-			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/timepart.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "w3c-musicxml/schema/timepart.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MARCXMLTOMEI30.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MARCXMLTOMEI30.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "encoding-tools/marc2mei/");
-			performXsltTransformation(inputStream, outputStream, "encoding-tools/marc2mei/marc2mei.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/marc2mei/marc2mei.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI2010TO2012.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI2010TO2012.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "encoding-tools/mei2010To2012/");
-			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2010To2012/mei2010To2012.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2010To2012/mei2010To2012.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI2012TOMEI21.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI2012TOMEI21.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "encoding-tools/mei2012To2013/");
-			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2012To2013/mei2012To2013.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2012To2013/mei2012To2013.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.MEI40TOLILYPOND.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.MEI40TOLILYPOND.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "meiler/mei2ly.xsl");
-			performXsltTransformation(inputStream, outputStream, "meiler/mei2ly.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "meiler/mei2ly.xsl", properties, tempDir);
 		}
 		else if(fromDataType.getFormat().equals(Conversion.COMPAREFILES.getIFormatId()) &&
 				toDataType.getFormat().equals(Conversion.COMPAREFILES.getOFormatId())) {
 
 			properties.put("extension", "xml");
 			properties.put("base", "data-configuration/scripts/");
-			performXsltTransformation(inputStream, outputStream, "data-configuration/scripts/compare.files.xsl", properties);
+			performXsltTransformation(inputStream, outputStream, "data-configuration/scripts/compare.files.xsl", properties, tempDir);
 		}
 	}
 
@@ -252,10 +256,18 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 	}
 
 	private File prepareTempDir() {
+		return prepareTempDir(null);
+	}
+	private File prepareTempDir(String tempDir) {
 		File inTempDir = null;
 		String uid = UUID.randomUUID().toString();
-		inTempDir = new File(EGEConstants.TEMP_PATH + File.separator + uid
-				+ File.separator);
+		if(tempDir!=null){
+			inTempDir = new File(tempDir + File.separator + uid
+					+ File.separator);
+		} else {
+			inTempDir = new File(EGEConstants.TEMP_PATH + File.separator + uid
+					+ File.separator);
+		}
 		inTempDir.mkdir();
 		return inTempDir;
 	}
@@ -264,7 +276,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 	 * Performs transformation with XSLT
 	 */
 	private void performXsltTransformation(InputStream inputStream,
-										   OutputStream outputStream, String xslt, final Map<String, String> properties)
+										   OutputStream outputStream, String xslt, final Map<String, String> properties, String tempDir)
 			throws IOException, SaxonApiException, ConverterException {
 		FileOutputStream fos = null;
 		InputStream is = null;
@@ -272,12 +284,12 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 		File outTempDir = null;
 		File outputDir = null;
 		try {
-			inTmpDir = prepareTempDir();
+			inTmpDir = prepareTempDir(tempDir);
 			ior.decompressStream(inputStream, inTmpDir);
 			// avoid processing files ending in .bin
 			File inputFile = searchForData(inTmpDir, "^.*(?<!bin)$");
 			if(inputFile!=null) {
-			outTempDir = prepareTempDir();
+			outTempDir = prepareTempDir(tempDir);
 			is = prepareInputData(inputStream, inTmpDir, inputFile);
 			Processor proc = SaxonProcFactory.getProcessor();
 			XsltCompiler comp = proc.newXsltCompiler();
