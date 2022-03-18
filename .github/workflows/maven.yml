@@ -23,7 +23,7 @@ jobs:
         distribution: 'adopt'
     - name: Install mei stylesheets
       run: |
-       sudo ./required.sh
+       sudo bash required.sh
     - name: maven-settings
       uses: s4u/maven-settings-action@v2
       with:
