@@ -26,8 +26,9 @@ jobs:
        VERSION_MEILER=$(curl "https://api.github.com/repos/rettinghaus/MEILER/releases/latest" | grep -Po '"tag_name": "v\K.*?(?=")')
        curl -s -L -o /tmp/meiler.zip https://github.com/rettinghaus/MEILER/archive/refs/tags/v${VERSION_MEILER}.zip
        sudo mkdir -p  /usr/share/xml/mei/music-stylesheets/meiler
-       sudo unzip /tmp/meiler.zip -d /usr/share/xml/mei/music-stylesheets/meiler
-       rm /tmp/meiler.zip
+       unzip /tmp/meiler.zip -d /tmp/meiler
+       sudo cp -r /tmp/meiler/*/*  /usr/share/xml/mei/music-stylesheets/meiler
+       rm /tmp/meiler*
     - name: maven-settings
       uses: s4u/maven-settings-action@v2
       with:
