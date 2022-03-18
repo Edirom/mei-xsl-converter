@@ -28,7 +28,7 @@ jobs:
        sudo mkdir -p  /usr/share/xml/mei/music-stylesheets/meiler
        unzip /tmp/meiler.zip -d /tmp/meiler
        sudo cp -r /tmp/meiler/*/*  /usr/share/xml/mei/music-stylesheets/meiler
-       rm /tmp/meiler*
+       rm -r /tmp/meiler*
     - name: maven-settings
       uses: s4u/maven-settings-action@v2
       with:
