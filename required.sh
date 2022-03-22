@@ -8,13 +8,6 @@ VERSION_MEILER=latest
 
 MEI_SOURCES_HOME=/usr/share/xml/mei
 
-VERSION_MEILER=$(curl "https://api.github.com/repos/rettinghaus/MEILER/releases/latest" | grep -Po '"tag_name": "v\K.*?(?=")')
-curl -s -L -o /tmp/meiler.zip https://github.com/rettinghaus/MEILER/archive/refs/tags/v${VERSION_MEILER}.zip
-sudo mkdir -p  /usr/share/xml/mei/music-stylesheets/meiler
-unzip /tmp/meiler.zip -d /tmp/meiler
-sudo cp -r /tmp/meiler/*/*  /usr/share/xml/mei/music-stylesheets/meiler
-rm -r /tmp/meiler*
-
 #https://github.com/music-encoding/encoding-tools/releases/latest
 if [ "$VERSION_ENCODING_TOOLS" = "latest" ] ; then 
     VERSION_ENCODING_TOOLS=$(curl "https://api.github.com/repos/music-encoding/encoding-tools/releases/latest" | grep -Po '"tag_name": "v\K.*?(?=")');    
