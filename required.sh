@@ -8,6 +8,7 @@ VERSION_MEILER=latest
 
 MEI_SOURCES_HOME=/usr/share/xml/mei
 
+#https://github.com/rettinghaus/MEILER/releases/latest
 VERSION_MEILER=$(curl "https://api.github.com/repos/rettinghaus/MEILER/releases/latest" | grep -Po '"tag_name": "v\K.*?(?=")')
 curl -s -L -o /tmp/meiler.zip https://github.com/rettinghaus/MEILER/archive/refs/tags/v${VERSION_MEILER}.zip
 sudo mkdir -p  /usr/share/xml/mei/music-stylesheets/meiler
