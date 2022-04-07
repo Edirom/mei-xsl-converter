@@ -319,7 +319,7 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			XsltExecutable exec = comp.compile(new StreamSource(new FileInputStream(new File(
 					ConverterConfiguration.getStylesheetsPath() + File.separator + xslt))));
 			Xslt30Transformer transformer = exec.load30();
-			transformer.setInitialContextNode(initialNode);
+			transformer.setGlobalContextItem(initialNode);
 			Serializer result = proc.newSerializer();
 			result.setOutputStream(fos);
 			transformer.applyTemplates(initialNode, result);
