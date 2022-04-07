@@ -6,7 +6,7 @@
 
     <groupId>de.edirom.meigarage</groupId>
     <artifactId>mei-xsl-converter</artifactId>
-    <version>0.2</version>
+    <version>0.2.1</version>
     <name>MEI XSL Converter</name>
     <properties>
 
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>9.8.0-7</version>
+            <version>9.8.0-15</version>
         </dependency>
         <dependency>
             <groupId>org.tei</groupId>
