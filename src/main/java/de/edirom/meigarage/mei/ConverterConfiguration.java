@@ -1,6 +1,7 @@
 package de.edirom.meigarage.mei;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import pl.psnc.dl.ege.types.ConversionActionArguments;
 import pl.psnc.dl.ege.types.DataType;
 
@@ -11,7 +12,7 @@ import java.util.Map;
 
 public class ConverterConfiguration {
 
-    private static final Logger LOGGER = Logger.getLogger(MEIXSLConverter.class);
+    private static final Logger LOGGER = LogManager.getLogger(MEIXSLConverter.class);
 
     public static final List<ConversionActionArguments> CONVERSIONS = new ArrayList<ConversionActionArguments>();
     public static final String PROFILE_KEY = "de.edirom.meigarage.mei.profileNames";

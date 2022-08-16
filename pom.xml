@@ -85,14 +85,8 @@
     <dependencies>
         <dependency>
             <groupId>pl.psnc.dl.ege</groupId>
-            <artifactId>ege-api</artifactId>
-            <version>0.4.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>pl.psnc.dl.ege</groupId>
             <artifactId>ege-framework</artifactId>
-            <version>0.5</version>
+            <version>0.5.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
