@@ -203,6 +203,48 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			properties.put("base", "data-configuration/scripts/");
 			performXsltTransformation(inputStream, outputStream, "data-configuration/scripts/compare.files.xsl", properties, tempDir);
 		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI2MARC.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI2MARC.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/mei2marc/");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2marc/mei2marc.xsl", properties, tempDir);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI2MODS.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI2MODS.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			properties.put("base", "encoding-tools/mei2mods/");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2mods/mei2mods.xsl", properties, tempDir);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI2MUP.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI2MUP.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			properties.put("base", "    encoding-tools/mei2mup/");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2mup/mei2mup-1.0.3.xsl", properties, tempDir);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI2MUSICXML.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI2MUSICXML.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			properties.put("base", "    encoding-tools/mei2musicxml/");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei2musicxml/mei2musicxml.xsl", properties, tempDir);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MEI40TO50.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MEI40TO50.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			properties.put("base", "    encoding-tools/mei40To50/");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mei40To50/mei40To50.xsl", properties, tempDir);
+		}
+		else if(fromDataType.getFormat().equals(Conversion.MNX2MEI.getIFormatId()) &&
+				toDataType.getFormat().equals(Conversion.MNX2MEI.getOFormatId())) {
+
+			properties.put("extension", "xml");
+			properties.put("base", "    encoding-tools/mnx2mei/");
+			performXsltTransformation(inputStream, outputStream, "encoding-tools/mnx2mei/mnx2mei.xsl", properties, tempDir);
+		}
 	}
 
 	/*

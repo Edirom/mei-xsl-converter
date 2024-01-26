@@ -35,6 +35,12 @@ public class ConverterConfiguration {
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2012TOMEI21));
         CONVERSIONS.add(getConversionActionArgument(Conversion.MEI40TOLILYPOND));
         CONVERSIONS.add(getConversionActionArgument(Conversion.COMPAREFILES));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2MARC));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2MODS));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2MUP));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MEI2MUSICXML));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MEI40TO50));
+        CONVERSIONS.add(getConversionActionArgument(Conversion.MNX2MEI));
     }
 
     private static ConversionActionArguments getConversionActionArgument(Conversion format) {

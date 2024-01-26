@@ -160,8 +160,91 @@ public enum Conversion {
             true, // "visible as input"
             9, // "cost"
             new HashMap<String, Property>() {}
+    ),
+    MEI2MARC(
+            "mei2marc", // "id"
+            "text/xml", // "output format id"
+            "mei21", // "input format id"
+            "MEI 2.1 (2013) Document", // "input description"
+            "score", // "output type" (score, audio, image, customization)
+            "text/xml", // "input mime type"
+            "marcxml", // "input format id"
+            "MARC XML Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            true, // "visible as input"
+            9, // "cost"
+            new HashMap<String, Property>() {}
+    ),
+    MEI2MODS(
+            "mei2mods", // "id"
+            "text/xml", // "output format id"
+            "mei21", // "input format id"
+            "MEI 2.1 (2013) Document", // "input description"
+            "score", // "output type" (score, audio, image, customization)
+            "text/xml", // "input mime type"
+            "mods", // "input format id"
+            "MODS (Metadata Object Description Schema) XML Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            true, // "visible as input"
+            9, // "cost"
+            new HashMap<String, Property>() {}
+    ),
+    MEI2MUP(
+            "mei2mup", // "id"
+            "text/xml", // "intput format id"
+            "mei21", // "input format id"
+            "MEI 2.1 (2013) Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "text/x-mup", // "output mime type"
+            "mup", // "output format id"
+            "Mup music publication program", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9, // "cost"
+            new HashMap<String, Property>() {}
+    ),
+    MEI2MUSICXML(
+            "mei2musicxml", // "id"
+            "text/xml", // "intput format id"
+            "mei21", // "input format id"
+            "MEI 2.1 (2013) Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "text/xml", // "input mime type"
+            "musicxml-timewise", // "input format id"
+            "MusicXML Document (timewise)", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            true, // "visible as input"
+            9, // "cost"
+            new HashMap<String, Property>() {}
+    ),
+    MEI40TO50(
+            "mei40to50", // "id"
+            "text/xml", // "input mime type"
+            "mei40", // "input format id"
+            "MEI 4.0 (2018) Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "text/xml", // "output format id"
+            "mei50", // "output format id"
+            "MEI 5.0 (2023) Document", // "output description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9, // "cost"
+            new HashMap<String, Property>() {}
+    ),
+    MNX2MEI(
+            "mnx2mei", // "id"
+            "application/json", // "input mime type"
+            "mnx", // "input format id"
+            "MNX JSON Document", // "input description"
+            "score", // "input type" (score, audio, image, customization)
+            "text/xml", // "output format id"
+            "mei40", // "input format id"
+            "MEI 4.0 (2018) Document", // "input description"
+            "score", // "output type" (score, audio, image, customization)
+            true, // "visible as input"
+            9, // "cost"
+            new HashMap<String, Property>() {}
     )
-
     ;
 
 
