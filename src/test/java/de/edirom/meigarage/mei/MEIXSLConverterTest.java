@@ -38,6 +38,9 @@ public class MEIXSLConverterTest {
         EGEConfigurationManager.getInstance().getStandardIOResolver().decompressStream(isout, new File("src/test/resources/test-output.ly"));
         //System.out.println(new String(Files. readAllBytes(Paths.get("src/test/resources/test-output.txt/result.txt")), "UTF-8"));
         assertNotEquals("", new String(Files.readAllBytes(Paths.get("src/test/resources/test-output.ly/document.xml")), "UTF-8"));
+        assertEquals("The files differ!",
+                new String(Files.readAllBytes(Paths.get("src/test/resources/test-output.ly/document.xml"))),
+                        new String(Files.readAllBytes(Paths.get("src/test/resources/document.xml"))));
         is.close();
         os.close();
         isout.close();

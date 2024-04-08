@@ -1,0 +1,72 @@
+\version "2.20.0"
+% automatically converted from MEI by mei2ly.xsl
+
+\header {
+  publisher = \markup { Musikwissenschaftliches Seminar, Detmold }
+  date = \markup { 2011 }
+  tagline = "automatically converted from MEI with mei2ly.xsl and engraved with Lilypond"
+  title = "Walzer G-Dur"
+  composer = "Dionisio Aguado y García"
+
+  % Revision Description
+  % 1. The original MusicXML file was generated using CapToMusic.py CapXML to MusicXML converter version 1.11.
+  % 2.  Maja Hartwig Transcoded from a MusicXML version 1.1 file on 2011-05-12 using the musicxml2mei stylesheet. 
+  % 3.  Kristina Richts  Cleaned up MEI file automatically using ppq.xsl. 
+  % 4.  Cleaned up MEI file automatically using Header.xsl.
+          
+  % 5. Kristina RichtsRevised the header.
+  % 6. Converted to MEI 2013 using mei2012To2013.xsl, version 1.0 beta
+  % 7. Converted to version 3.0.0 using mei21To30.xsl, version 1.0 beta
+  % 8. Converted to MEI version 4.0.0 using mei30To40.xsl, version 1.0 beta
+}
+
+mdivA_staffA = {
+  \set Staff.clefGlyph = #"clefs.G" \set Staff.clefPosition = #-2 \set Staff.clefTransposition = #-7 \set Staff.middleCPosition = #1 \set Staff.middleCClefPosition = #1 \once \override Score.MetronomeMark.direction = #UP << { r8 \tweak Stem.direction #UP b''16-[ \tweak Stem.direction #UP c'''16 \tweak Stem.direction #UP d'''8] } \\ { < \tweak Stem.direction #DOWN g' b' >4. } >> %1
+  << { r8 \tweak Stem.direction #UP g''16-[ \tweak Stem.direction #UP a''16 \tweak Stem.direction #UP b''8] } \\ { < \tweak Stem.direction #DOWN g' b' >4. } >> %2
+  << { r8 < \tweak Stem.direction #UP c'' fis'' >8-[ < \tweak Stem.direction #UP c'' fis'' >8] } \\ { \tweak Stem.direction #DOWN d'4. } >> %3
+  << { < \tweak Stem.direction #UP b' g'' >4. } \\ { \tweak Stem.direction #DOWN g'8-[ \tweak Stem.direction #DOWN d'16 \tweak Stem.direction #DOWN b16 \tweak Stem.direction #DOWN g8] } >> %4
+  << { r8 \tweak Stem.direction #UP b''16-[ \tweak Stem.direction #UP c'''16 \tweak Stem.direction #UP d'''8] } \\ { < \tweak Stem.direction #DOWN g' b' >4. } >> %5
+  { \break }
+  << { r8 \tweak Stem.direction #UP g''16-[ \tweak Stem.direction #UP a''16 \tweak Stem.direction #UP b''8] } \\ { < \tweak Stem.direction #DOWN g' b' >4. } >> %6
+  << { \tweak Stem.direction #UP cis''!8-[ \tweak Stem.direction #UP a''8 \tweak Stem.direction #UP a''8] } \\ { < \tweak Stem.direction #DOWN a g' >4. } >> %7
+  << { \tweak Stem.direction #UP d''4 \tweak extra-offset #'(0 . -3.5) r8 } \\ { < \tweak Stem.direction #DOWN d' fis' >4 \tweak extra-offset #'(0 . -3.5) r8 } >> \bar ".|:" %8
+  \bar ".|:" << { r8 < \tweak Stem.direction #UP d'' fis'' >16-[ < \tweak Stem.direction #UP cis''! eis''! >16 < \tweak Stem.direction #UP d'' fis'' >8] } \\ { \tweak Stem.direction #DOWN d'4. } >> %9
+  << { r8 < \tweak Stem.direction #UP fis'' a'' >16-[ < \tweak Stem.direction #UP eis''! gis''! >16 < \tweak Stem.direction #UP fis'' a'' >8] } \\ { \tweak Stem.direction #DOWN d'4. } >> %10
+  { \break }
+  << { r8 < \tweak Stem.direction #UP a'' c''' >8-[ < \tweak Stem.direction #UP g'' b'' >8] } \\ { \tweak Stem.direction #DOWN d'4.~_~ } >> %11
+  << { < \tweak Stem.direction #UP g'' b'' >4 < \tweak Stem.direction #UP fis'' a'' >8 } \\ { \tweak Stem.direction #DOWN d'4. } >> %12
+  << { r8 < \tweak Stem.direction #UP d'' fis'' >16-[ < \tweak Stem.direction #UP cis''! eis''! >16 < \tweak Stem.direction #UP d'' fis'' >8] } \\ { \tweak Stem.direction #DOWN d'4. } >> %13
+  << { r8 < \tweak Stem.direction #UP fis'' a'' >16-[ < \tweak Stem.direction #UP eis''! gis''! >16 < \tweak Stem.direction #UP fis'' a'' >8] } \\ { \tweak Stem.direction #DOWN d'4. } >> %14
+  << { < \tweak Stem.direction #UP e'' g'' >4 < \tweak Stem.direction #UP g'' cis'''! >8 } \\ { r8 \tweak Stem.direction #DOWN a8-[ \tweak Stem.direction #DOWN a'8] } >> %15
+  { \break }
+  << { < \tweak Stem.direction #UP fis'' d''' >4 \tweak extra-offset #'(0 . -3.5) r8 } \\ { \tweak Stem.direction #DOWN d'4 \tweak extra-offset #'(0 . -3.5) r8 } >> %16
+  << { r8 \tweak Stem.direction #UP b''16-[ \tweak Stem.direction #UP c'''16 \tweak Stem.direction #UP d'''8] } \\ { < \tweak Stem.direction #DOWN g' b' >4. } >> %17
+  << { r8 \tweak Stem.direction #UP g''16-[ \tweak Stem.direction #UP a''16 \tweak Stem.direction #UP b''8] } \\ { < \tweak Stem.direction #DOWN g' b' >4. } >> %18
+  << { r8 < \tweak Stem.direction #UP c'' fis'' >8-[ < \tweak Stem.direction #UP c'' fis'' >8] } \\ { \tweak Stem.direction #DOWN d'4. } >> %19
+  { \break }
+  << { < \tweak Stem.direction #UP b' g'' >4. } \\ { \tweak Stem.direction #DOWN g'8-[ \tweak Stem.direction #DOWN d'16 \tweak Stem.direction #DOWN b16 \tweak Stem.direction #DOWN g8] } >> %20
+  << { r8 \tweak Stem.direction #UP b''16-[ \tweak Stem.direction #UP c'''16 \tweak Stem.direction #UP d'''8] } \\ { < \tweak Stem.direction #DOWN g' b' >4. } >> %21
+  << { r8 < \tweak Stem.direction #UP c'' a'' >4 } \\ { \tweak Stem.direction #DOWN c'4. } >> %22
+  << { r8 < \tweak Stem.direction #UP c'' fis'' >16-[ \tweak Stem.direction #UP e''16 < \tweak Stem.direction #UP c'' fis'' >8] } \\ { \tweak Stem.direction #DOWN d'4. } >> %23
+  << { < \tweak Stem.direction #UP b' g'' >4 r8 } \\ { \tweak Stem.direction #DOWN g4 r8 } >> \bar ":|." %24
+}
+
+
+\markup{{WALZER G-DUR}\right-align {Dionisio Aguado1784-1849}}
+
+\score { <<
+\new StaffGroup <<
+ \omit StaffGroup.SystemStartBracket 
+ \new Staff = "staff 1" {
+ \override Staff.StaffSymbol.line-count = #5
+    \set Staff.autoBeaming = ##f 
+    \set tieWaitForNote = ##t
+ \key g \major
+\time 3/8 \mdivA_staffA }
+>>
+>>
+\layout {
+ \context { \Score \consists "Span_arpeggio_engraver" }
+}
+}
+
