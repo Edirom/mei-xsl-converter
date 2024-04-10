@@ -40,7 +40,7 @@ public class MEIXSLConverterTest {
         assertNotEquals("", new String(Files.readAllBytes(Paths.get("src/test/resources/test-output.ly/document.xml")), "UTF-8"));
         assertEquals("The files differ!",
                 new String(Files.readAllBytes(Paths.get("src/test/resources/test-output.ly/document.xml"))),
-                        new String(Files.readAllBytes(Paths.get("src/test/resources/document.xml"))));
+                        new String(Files.readAllBytes(Paths.get("src/test/resources/expected-output.xml"))));
         is.close();
         os.close();
         isout.close();
