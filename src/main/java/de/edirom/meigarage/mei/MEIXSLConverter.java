@@ -335,6 +335,15 @@ public class MEIXSLConverter implements Converter,ErrorHandler {
 			outTempDir = prepareTempDir(tempDir);
 			is = prepareInputData(inputStream, inTmpDir, inputFile);
 			Processor proc = SaxonProcFactory.getProcessor();
+			DocumentBuilder documentBuilder = proc.newDocumentBuilder();
+			//required to prevent xxe injections
+			try {
+				documentBuilder.build(inputFile);
+			} catch (SaxonApiException e) {
+				LOGGER.error("There is a Doctype Declaration present in the source document that cannot be processed due to security reasons. Please remove it from your file and try again. "
+						+ e.getMessage());
+				return;
+			}
 			XsltCompiler comp = proc.newXsltCompiler();
 			XdmNode initialNode = getInitialNode(inputFile);
 			String extension = properties.get("extension");
