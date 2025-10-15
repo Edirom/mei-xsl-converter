@@ -97,7 +97,7 @@
         <dependency>
             <groupId>org.tei</groupId>
             <artifactId>tei-javalib</artifactId>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/junit/junit -->
