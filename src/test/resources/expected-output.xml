@@ -1,4 +1,4 @@
-\version "2.20.0"
+\version "2.24.0"
 % automatically converted from MEI by mei2ly.xsl
 
 \header {
@@ -61,8 +61,7 @@ mdivA_staffA = {
  \override Staff.StaffSymbol.line-count = #5
     \set Staff.autoBeaming = ##f 
     \set tieWaitForNote = ##t
- \key g \major
-\time 3/8 \mdivA_staffA }
+   \time 3/8 \mdivA_staffA }
 >>
 >>
 \layout {
